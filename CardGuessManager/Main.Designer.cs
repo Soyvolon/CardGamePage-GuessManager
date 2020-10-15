@@ -175,14 +175,14 @@
             this.usernameInput.Location = new System.Drawing.Point(74, 15);
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(177, 23);
-            this.usernameInput.TabIndex = 1;
+            this.usernameInput.TabIndex = 0;
             // 
             // checkAuth
             // 
             this.checkAuth.Location = new System.Drawing.Point(269, 46);
             this.checkAuth.Name = "checkAuth";
             this.checkAuth.Size = new System.Drawing.Size(93, 23);
-            this.checkAuth.TabIndex = 0;
+            this.checkAuth.TabIndex = 3;
             this.checkAuth.Text = "Check Auth";
             this.checkAuth.UseVisualStyleBackColor = true;
             this.checkAuth.Click += new System.EventHandler(this.CheckAuth_Click);
@@ -215,7 +215,7 @@
             this.timeInput.Mask = "00:00";
             this.timeInput.Name = "timeInput";
             this.timeInput.Size = new System.Drawing.Size(127, 23);
-            this.timeInput.TabIndex = 6;
+            this.timeInput.TabIndex = 4;
             this.timeInput.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MaskedTextBox_MaskInputRejected);
             this.timeInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.timeInput_KeyDown);
             // 
@@ -225,7 +225,7 @@
             this.dateInput.Mask = "00/00/0000";
             this.dateInput.Name = "dateInput";
             this.dateInput.Size = new System.Drawing.Size(127, 23);
-            this.dateInput.TabIndex = 6;
+            this.dateInput.TabIndex = 3;
             this.dateInput.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MaskedTextBox_MaskInputRejected);
             this.dateInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateInput_KeyDown);
             // 
@@ -235,7 +235,7 @@
             this.userIdInput.Mask = "000000000000000000";
             this.userIdInput.Name = "userIdInput";
             this.userIdInput.Size = new System.Drawing.Size(127, 23);
-            this.userIdInput.TabIndex = 6;
+            this.userIdInput.TabIndex = 1;
             this.userIdInput.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.MaskedTextBox_MaskInputRejected);
             this.userIdInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.userIdInput_KeyDown);
             // 
@@ -245,7 +245,7 @@
             this.winnerCheckBox.Location = new System.Drawing.Point(9, 156);
             this.winnerCheckBox.Name = "winnerCheckBox";
             this.winnerCheckBox.Size = new System.Drawing.Size(68, 27);
-            this.winnerCheckBox.TabIndex = 5;
+            this.winnerCheckBox.TabIndex = 0;
             this.winnerCheckBox.Text = "Winner";
             this.winnerCheckBox.UseVisualStyleBackColor = true;
             // 
@@ -282,7 +282,7 @@
             this.newGuess.Location = new System.Drawing.Point(83, 156);
             this.newGuess.Name = "newGuess";
             this.newGuess.Size = new System.Drawing.Size(326, 23);
-            this.newGuess.TabIndex = 3;
+            this.newGuess.TabIndex = 5;
             this.newGuess.Text = "Submit New Guess";
             this.newGuess.UseVisualStyleBackColor = true;
             this.newGuess.Click += new System.EventHandler(this.NewGuess_Click);
@@ -410,7 +410,7 @@
             this.cardSelector.Location = new System.Drawing.Point(64, 66);
             this.cardSelector.Name = "cardSelector";
             this.cardSelector.Size = new System.Drawing.Size(127, 23);
-            this.cardSelector.TabIndex = 0;
+            this.cardSelector.TabIndex = 2;
             this.cardSelector.TextChanged += new System.EventHandler(this.ItemSelector_TextChanged);
             // 
             // guessControls
