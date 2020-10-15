@@ -232,7 +232,7 @@
             // userIdInput
             // 
             this.userIdInput.Location = new System.Drawing.Point(64, 36);
-            this.userIdInput.Mask = "000000000000000000";
+            this.userIdInput.Mask = "000000000000000009";
             this.userIdInput.Name = "userIdInput";
             this.userIdInput.Size = new System.Drawing.Size(127, 23);
             this.userIdInput.TabIndex = 1;
