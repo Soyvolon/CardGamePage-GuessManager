@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using CardGuessManager.Data;
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace CardGuessManager
 {
@@ -84,7 +85,7 @@ namespace CardGuessManager
             }
             else
             {
-                uriBuilder.Host = "andrewbounds.com";
+                uriBuilder.Host = "cards.andrewbounds.com";
                 uriBuilder.Scheme = "https";
             }
 
@@ -416,6 +417,59 @@ namespace CardGuessManager
                 connectionLabel.Text = old;
             }
         }
+
+        public async Task PostDeleteAsync(CardGuess guess)
+        {
+            var old = connectionLabel.Text;
+            connectionLabel.Text = "DELETE-ing Guess";
+
+            JObject json = new JObject();
+            json.Add("user_id", guess.UserId);
+            json.Add("card", guess.Card);
+            json.Add("date", guess.Date);
+            json.Add("game_id", guess.GameId);
+
+            var b = new UriBuilder(uriBuilder.Uri)
+            {
+                Path = Api[1] + "/game/guess/delete"
+            };
+
+            var request = new HttpRequestMessage()
+            {
+                RequestUri = b.Uri,
+                Method = HttpMethod.Post
+            };
+
+            var raw = json.ToString();
+            request.Content = new StringContent(raw, Encoding.UTF8, "application/json");
+
+            request.Headers.Add("Authorization", Auth);
+
+            try
+            {
+                var res = await client.SendAsync(request);
+
+                if (res.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    // Get the updated game.
+                    await GetCurrentGame();
+                }
+                else
+                {
+                    toolTip.ToolTipTitle = "POST Errored";
+                    toolTip.Show("Failed to POST delete guess to API. Check JSON data and API logs.", postWinner);
+                }
+            }
+            catch (Exception ex)
+            {
+                toolTip.ToolTipTitle = "POST Errored";
+                toolTip.Show("Failed to POST delete guess to API. Check JSON data and API logs.\n" + ex.Message, postWinner);
+            }
+            finally
+            {
+                connectionLabel.Text = old;
+            }
+        }
         #endregion
 
         #region Tooltips
@@ -627,5 +681,19 @@ namespace CardGuessManager
         }
         #endregion
 
+        private async void PostDelete_Click(object sender, EventArgs e)
+        {
+            if (currentGame.SelectedItem is null)
+            {
+                toolTip.ToolTipTitle = "No Live Item Selected";
+                toolTip.Show("You must select an item from the Live to delete it.", postDelete, 0, -20, 2500);
+                return;
+            }
+
+            var guess = (CardGuess)currentGame.SelectedItem;
+
+            using var lockout = new ToolLockout(this);
+            await PostDeleteAsync(guess);
+        }
     }
 }

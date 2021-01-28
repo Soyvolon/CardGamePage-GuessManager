@@ -112,9 +112,10 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(33, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(431, 15);
+            this.label1.Size = new System.Drawing.Size(462, 15);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Everything here is TODO! Visit https://andrewbounds.com/ for more information";
+            this.label1.Text = "Everything here is TODO! Visit https://cards.andrewbounds.com/ for more informati" +
+    "on";
             // 
             // adminTab
             // 
@@ -496,6 +497,7 @@
             this.postDelete.TabIndex = 3;
             this.postDelete.Text = "POST Delete Guess";
             this.postDelete.UseVisualStyleBackColor = true;
+            this.postDelete.Click += new System.EventHandler(this.PostDelete_Click);
             // 
             // postWinner
             // 
